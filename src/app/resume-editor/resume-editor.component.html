@@ -1,6 +1,0 @@
-<div class="resumeEditor">
-  <div *ngIf="enableHtml; else originTpl" [innerHTML]="result"></div>
-  <ng-template #originTpl>
-    <pre>{{ result }}</pre>
-  </ng-template>
-</div>
