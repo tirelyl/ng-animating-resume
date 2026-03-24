@@ -1,0 +1,20 @@
+name: CI Smoke Test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print context
+        run: |
+          echo "Workflow is running"
+          echo "ref=${{ github.ref }}"
+          echo "sha=${{ github.sha }}"
