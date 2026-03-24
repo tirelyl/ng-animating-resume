@@ -1,0 +1,25 @@
+name: CI Smoke Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Print context
+        run: |
+          echo "Workflow is running"
+          echo "ref=${{ github.ref }}"
+          echo "sha=${{ github.sha }}"
